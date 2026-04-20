@@ -1,14 +1,14 @@
 # LinkedList 구현 체크리스트
 
 ## 기본 연산 구현 여부
-- [ ] `addFirst(value)` — 맨 앞에 삽입
-- [ ] `addLast(value)` — 맨 뒤에 삽입
-- [ ] `add(index, value)` — 특정 인덱스에 삽입
-- [ ] `removeFirst()` — 맨 앞 삭제 후 반환
-- [ ] `removeLast()` — 맨 뒤 삭제 후 반환
-- [ ] `remove(index)` — 특정 인덱스 삭제 후 반환
-- [ ] `get(index)` — 특정 인덱스 값 조회
-- [ ] `size` / `isEmpty()`
+- [x] `addFirst(value)` — 맨 앞에 삽입
+- [x] `addLast(value)` — 맨 뒤에 삽입
+- [x] `add(index, value)` — 특정 인덱스에 삽입
+- [x] `removeFirst()` — 맨 앞 삭제 후 반환
+- [ ] `removeLast()` — 맨 뒤 삭제 후 반환 (**미구현**)
+- [x] `remove(index)` — 특정 인덱스 삭제
+- [x] `get(index)` — 특정 인덱스 값 조회
+- [x] `size` / `isEmpty()`
 
 ---
 
