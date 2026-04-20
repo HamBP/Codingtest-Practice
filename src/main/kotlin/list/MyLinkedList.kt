@@ -115,13 +115,26 @@ class MyLinkedList<E> {
     }
 
     fun remove(index: Int) {
-        TODO()
+        if (index !in 0..<size) throw IndexOutOfBoundsException()
+
+        if (index == 0) {
+            removeFirst()
+            return
+        }
+
+        var cur = head
+        repeat(index) {
+            cur = cur?.next
+        }
+
+        cur!!.prev!!.next = cur.next
+        cur.next!!.prev = cur.prev
 
         _size--
     }
 }
 
-data class Node<E>(
+private data class Node<E>(
     val value: E,
     var next: Node<E>? = null,
     var prev: Node<E>? = null,
