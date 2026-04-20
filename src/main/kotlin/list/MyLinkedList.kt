@@ -8,14 +8,16 @@ class MyLinkedList<E> {
     private var head: Node<E>? = null
 
     fun addFirst(value: E) {
+        val newNode = Node(value = value)
+
         if (head == null) {
-            head = Node(value = value)
+            head = newNode
             _size++
             return
         }
 
         val oldHead = head!!
-        head = Node(value = value)
+        head = newNode
 
         head!!.next = oldHead
         head!!.prev = oldHead.prev
@@ -27,11 +29,23 @@ class MyLinkedList<E> {
     }
 
     fun addLast(value: E) {
+        val newNode = Node(value = value)
+
         if (head == null) {
-            head = Node(value = value)
+            head = newNode
+            _size++
+            return
         }
 
-        TODO("Implement this")
+        val oldLast = head!!.prev
+
+        // 기존 last와의 관계 정리
+        oldLast!!.next = newNode
+        newNode.prev = oldLast
+
+        // head와의 관계 정리
+        newNode.next = head
+        head!!.prev = newNode
 
         _size++
     }
