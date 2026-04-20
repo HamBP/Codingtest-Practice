@@ -4,36 +4,62 @@ package org.example.queue
 class MyDeque<E : Any>(private val capacity: Int = 16) {
     val array = Array(capacity) { Any() }
     var head = 0
-    var tail = 0
+    var tail = capacity - 1
 
     private var _size = 0
     val size get() = _size
 
+    private val isFull get() = (tail + 1) % capacity == head && size > 0
+
     fun addFirst(value: E) {
-        TODO("Implement this")
+        head = (head + capacity - 1) % capacity
+        array[head] = value
+        _size++
     }
 
     fun addLast(value: E) {
-        TODO("Implement this")
+        tail++
+        tail %= capacity
+
+        array[tail] = value
+        _size++
     }
 
     fun removeFirst(): E? {
-        TODO("Implement this")
+        if (isEmpty()) return null
+
+        val res = array[head] as E
+        head++
+        head %= capacity
+
+        _size--
+
+        return res
     }
 
     fun removeLast(): E? {
-        TODO("Implement this")
+        if (isEmpty()) return null
+
+        val res = array[tail] as E
+        tail = (tail + capacity - 1) % capacity
+        _size--
+
+        return res
     }
 
     fun peekFirst(): E? {
-        TODO("Implement this")
+        if (isEmpty()) return null
+
+        return array[head] as E
     }
 
     fun peekLast(): E? {
-        TODO("Implement this")
+        if (isEmpty()) return null
+
+        return array[tail] as E
     }
 
     fun isEmpty(): Boolean {
-        TODO("Implement this")
+        return size == 0
     }
 }
