@@ -5,39 +5,73 @@ class MyLinkedList<E> {
     val size
         get() = _size
 
-    private val head: Node<E>? = null
+    private var head: Node<E>? = null
 
     fun addFirst(value: E) {
-        TODO("Implement this")
+        if (head == null) {
+            head = Node(value = value)
+            _size++
+            return
+        }
+
+        val oldHead = head!!
+        head = Node(value = value)
+
+        head!!.next = oldHead
+        head!!.prev = oldHead.prev
+
+        oldHead.prev!!.next = head
+        oldHead.prev = head
+
+        _size++
     }
 
     fun addLast(value: E) {
+        if (head == null) {
+            head = Node(value = value)
+        }
+
         TODO("Implement this")
+
+        _size++
     }
 
     fun add(index: Int, value: E) {
         TODO("Implement this")
+
+        _size++
     }
 
     operator fun get(index: Int): E {
-        TODO("Implement this")
+        check(index < size) { "Index $index out of size < $size" }
+
+        var cur = head
+        repeat(index) {
+            cur = cur?.next
+        }
+
+        return cur!!.value
     }
 
     fun isEmpty(): Boolean {
-        TODO("Implement this")
+        return head == null
     }
 
     fun removeFirst(): Boolean {
         TODO()
+
+        _size--
     }
 
     fun remove(index: Int) {
         TODO()
+
+        _size--
     }
 }
 
 data class Node<E>(
     val value: E,
-    val next: Node<E>? = null,
-    val prev: Node<E>? = null,
+    var next: Node<E>? = null,
+    var prev: Node<E>? = null,
 )
