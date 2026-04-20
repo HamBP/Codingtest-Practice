@@ -55,7 +55,7 @@ class MyLinkedList<E> {
     }
 
     fun add(index: Int, value: E) {
-        check(index < size) { "Index $index out of size < $size" }
+        if (index >= size) throw IndexOutOfBoundsException()
 
         if (index == 0) {
             addFirst(value)
@@ -82,7 +82,7 @@ class MyLinkedList<E> {
     }
 
     operator fun get(index: Int): E {
-        check(index < size) { "Index $index out of size < $size" }
+        if (index >= size) throw IndexOutOfBoundsException()
 
         var cur = head
         repeat(index) {
