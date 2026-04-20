@@ -55,7 +55,7 @@ class MyLinkedList<E> {
     }
 
     fun add(index: Int, value: E) {
-        if (index !in 0..<size) throw IndexOutOfBoundsException()
+        if (index !in 0..size) throw IndexOutOfBoundsException()
 
         if (index == 0) {
             addFirst(value)
