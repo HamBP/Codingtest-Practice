@@ -1,22 +1,22 @@
 package org.example.stack
 
 class MyStack<E> {
-    private var _size = 0
-    val size get() = _size
+    val list = mutableListOf<E>()
+    val size get() = list.size
 
     fun push(value: E) {
-        TODO("Implement this")
+        list.add(list.size, value)
     }
 
     fun pop(): E? {
-        TODO("Implement this")
+        return list.removeLastOrNull()
     }
 
     fun peek(): E? {
-        TODO("Implement this")
+        return list.lastOrNull()
     }
 
     fun isEmpty(): Boolean {
-        TODO("Implement this")
+        return list.isEmpty()
     }
 }
