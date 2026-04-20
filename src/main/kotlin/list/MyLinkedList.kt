@@ -101,6 +101,7 @@ class MyLinkedList<E> {
 
         if (size == 1) {
             head = null
+            _size = 0
             return true
         }
 
