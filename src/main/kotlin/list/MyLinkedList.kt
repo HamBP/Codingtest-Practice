@@ -97,9 +97,21 @@ class MyLinkedList<E> {
     }
 
     fun removeFirst(): Boolean {
-        TODO()
+        if (isEmpty()) return false
+
+        if (size == 1) {
+            head = null
+            return true
+        }
+
+        val oldHead = head
+        head = head!!.next
+        head!!.prev = oldHead!!.prev
+        oldHead.next = head
 
         _size--
+
+        return true
     }
 
     fun remove(index: Int) {
