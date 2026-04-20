@@ -57,6 +57,11 @@ class MyLinkedList<E> {
     fun add(index: Int, value: E) {
         check(index < size) { "Index $index out of size < $size" }
 
+        if (index == 0) {
+            addFirst(value)
+            return
+        }
+
         val newNode = Node(value = value)
 
         var cur = head
@@ -70,7 +75,7 @@ class MyLinkedList<E> {
         targetPrev!!.next = newNode
         newNode.prev = targetPrev
 
-        targetNext!!.prev = newNode
+        targetNext.prev = newNode
         newNode.next = targetNext
 
         _size++
