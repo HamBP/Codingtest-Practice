@@ -12,6 +12,8 @@ class MyLinkedList<E> {
 
         if (head == null) {
             head = newNode
+            head!!.next = newNode
+            head!!.prev = newNode
             _size++
             return
         }
@@ -33,6 +35,8 @@ class MyLinkedList<E> {
 
         if (head == null) {
             head = newNode
+            head!!.next = newNode
+            head!!.prev = newNode
             _size++
             return
         }
@@ -51,7 +55,23 @@ class MyLinkedList<E> {
     }
 
     fun add(index: Int, value: E) {
-        TODO("Implement this")
+        check(index < size) { "Index $index out of size < $size" }
+
+        val newNode = Node(value = value)
+
+        var cur = head
+        repeat(index) {
+            cur = cur!!.next
+        }
+
+        val targetPrev = cur!!.prev
+        val targetNext = cur
+
+        targetPrev!!.next = newNode
+        newNode.prev = targetPrev
+
+        targetNext!!.prev = newNode
+        newNode.next = targetNext
 
         _size++
     }
