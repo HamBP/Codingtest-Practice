@@ -180,23 +180,23 @@ class MyBSTTest {
 
     @Test
     fun `height of empty tree is 0`() {
-        assertEquals(0, MyBST<Int>().height())
+        assertEquals(0, MyBST<Int>().height)
     }
 
     @Test
     fun `height of single node is 1`() {
-        assertEquals(1, MyBST<Int>().also { it.insert(1) }.height())
+        assertEquals(1, MyBST<Int>().also { it.insert(1) }.height)
     }
 
     @Test
     fun `height of balanced tree`() {
-        assertEquals(3, bst.height())
+        assertEquals(3, bst.height)
     }
 
     @Test
     fun `height of right-skewed tree`() {
         val t = MyBST<Int>()
         listOf(1, 2, 3, 4).forEach { t.insert(it) }
-        assertEquals(4, t.height())
+        assertEquals(4, t.height)
     }
 }
