@@ -62,7 +62,14 @@ class MyBST<E : Comparable<E>> {
     }
 
     fun inorder(): List<E> {
-        TODO("Implement this")
+        return inorder(currentNode = root)
+    }
+
+    fun inorder(currentNode: Node<E>?): List<E> {
+        val left = currentNode?.left?.run { inorder(this) } ?: emptyList()
+        val mid = currentNode?.let { listOf(it.value) } ?: emptyList<E>()
+        val right = currentNode?.right?.run { inorder(this) } ?: emptyList()
+        return left + mid + right
     }
 
     fun min(): E? {
