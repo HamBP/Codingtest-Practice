@@ -1,19 +1,21 @@
 package org.example.tree
 
-class MyBinaryTree<E : Comparable<E>> {
+class MyBST<E : Comparable<E>> {
     var root: Node<E>? = null
     private var _size = 0
     val size get() = _size
 
     fun insert(value: E) {
         TODO("Implement this")
+
+        _size++
     }
 
     fun contains(value: E): Boolean {
         TODO("Implement this")
     }
 
-    fun preorder(): List<E> {
+    fun remove(value: E) {
         TODO("Implement this")
     }
 
@@ -21,11 +23,11 @@ class MyBinaryTree<E : Comparable<E>> {
         TODO("Implement this")
     }
 
-    fun postorder(): List<E> {
+    fun min(): E? {
         TODO("Implement this")
     }
 
-    fun levelorder(): List<E> {
+    fun max(): E? {
         TODO("Implement this")
     }
 
@@ -36,6 +38,6 @@ class MyBinaryTree<E : Comparable<E>> {
 
 data class Node<E>(
     val value: E,
-    var left: Node<E>? = null,
-    var right: Node<E>? = null,
+    val left: Node<E>? = null,
+    val right: Node<E>? = null,
 )
