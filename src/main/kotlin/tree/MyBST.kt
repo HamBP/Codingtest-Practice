@@ -4,25 +4,25 @@ import kotlin.math.max
 
 class MyBST<E : Comparable<E>> {
     var root: Node<E>? = null
-    private var _size = 0
-    val size get() = _size
-    var height = 0
+//    private var _size = 0
+//    val size get() = _size
+//    var height = 0
 
     fun insert(value: E) {
+//        height = max(height, 1)
         val newNode = Node(value)
 
         if (root == null) {
             root = newNode
         } else {
-            insertNode(1, root!!, newNode)
+            insertNode(2, root!!, newNode)
         }
-
-        _size++
     }
 
     private fun insertNode(depth: Int, currentNode: Node<E>, newNode: Node<E>) {
-        height = max(height, depth)
+//        height = max(height, depth)
 
+        if (newNode.value == currentNode.value) return
         if (newNode.value < currentNode.value) {
             val leftNode = currentNode.left
             if (leftNode == null) {
