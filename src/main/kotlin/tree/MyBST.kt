@@ -58,7 +58,28 @@ class MyBST<E : Comparable<E>> {
     }
 
     fun remove(value: E) {
-        TODO("Implement this")
+        root = removeNode(root, value)
+    }
+
+    fun removeNode(currentNode: Node<E>?, value: E): Node<E>? {
+        if (currentNode == null) return null
+
+        when {
+            value < currentNode.value -> currentNode.left = removeNode(currentNode.left, value)
+            value > currentNode.value -> currentNode.right = removeNode(currentNode.right, value)
+            else -> {
+                if (currentNode.left == null && currentNode.right == null) return null
+
+                if (currentNode.left == null) return currentNode.right
+                if (currentNode.right == null) return currentNode.left
+
+                val rightMinValue = searchMin(currentNode.right!!)
+                currentNode.value = rightMinValue
+                currentNode.right = removeNode(currentNode.right, currentNode.value)
+            }
+        }
+
+        return currentNode
     }
 
     fun inorder(): List<E> {
@@ -94,7 +115,7 @@ class MyBST<E : Comparable<E>> {
 }
 
 data class Node<E>(
-    val value: E,
+    var value: E,
     var left: Node<E>? = null,
     var right: Node<E>? = null,
 )
